@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FactOrFiction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='design.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Fake News Detector</h1>
+        <form action="{{ url_for('predict') }}" method="POST">
+            <textarea name="message" rows="6" cols="50" required="required"></textarea>
+            <button type="submit" class="predict-button">Predict</button>
+        </form>
+        <div class="result">
+            {% if prediction == 'FAKE' %}
+                <p class="result-text fake">Seems Spam News</p>
+            {% elif prediction == 'REAL' %}
+                <p class="result-text real">Seems Real News</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
